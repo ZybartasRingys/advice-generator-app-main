@@ -1,24 +1,57 @@
-const adviceNumber = document.getElementById('number')
-const adviceText = document.getElementById('advice')
+"use strict";
 
-// defaut advice
+const adviceNumber = document.getElementById("number");
+const adviceText = document.getElementById("advice");
 
-let advice = {
-  id: 117,
-  advice:
-    "It is easy to sit up and take notice, what's more difficult is getting up and taking action."
+const url = "https://api.adviceslip.com/advice";
+
+//async fetch function to get data from api
+
+async function getAdvice() {
+  let url = "https://api.adviceslip.com/advice";
+
+  try {
+    let res = await fetch(url);
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-// fetch function
+// render advices to page function
 
-function fetchAdvice() {
-  fetch('https://api.adviceslip.com/advice')
-    .then(response => response.json())
-    .then(data => {
-      data.forEach(advice => {
-        console.log(advice)
-      })
-    })
+async function renderAdvice() {
+  let text = await getAdvice();
+
+  //destructing object from getAdvice
+  let { id, advice } = text.slip;
+
+  let html = "";
+
+  let htmlSegment = `<div class="container">
+      <div class="card">
+        <h1 id="number">Advice #${id}</h1>
+        <div class="advice" id="advice">
+         "${advice}"
+        </div>
+        <div class="image"> </div>
+      </div>
+      <button class="dice" id="dice">
+        <img src="/images/icon-dice.svg" alt="dice" />
+      </button>
+    </div>`;
+
+  html += htmlSegment;
+
+  // inser to html
+
+  let container = document.querySelector(".container");
+  container.innerHTML = html;
+
+  // btn event with callback function render advice to get new advice
+
+  const btn = document.getElementById("dice");
+  btn.addEventListener("click", renderAdvice);
 }
 
-fetchAdvice()
+window.onload = renderAdvice;
