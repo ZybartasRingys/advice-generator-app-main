@@ -69,6 +69,11 @@ body {
   border: none;
   border-radius: 50%;
   background-color: $NeonGreen;
+  background-image: url(/images/icon-dice.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+
   cursor: pointer;
 
   &:hover {

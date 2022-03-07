@@ -78,6 +78,10 @@ body {
   border: none;
   border-radius: 50%;
   background-color: #52ffa8;
+  background-image: url(/images/icon-dice.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
   cursor: pointer;
 }
 

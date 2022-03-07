@@ -31,13 +31,13 @@ async function renderAdvice() {
   let htmlSegment = `<div class="container">
       <div class="card">
         <h1 id="number">Advice #${id}</h1>
-        <div class="advice" id="advice">
+        <p class="advice" id="advice">
          "${advice}"
-        </div>
+        </p>
         <div class="image"> </div>
       </div>
-      <button class="dice" id="dice">
-        <img src="/images/icon-dice.svg" alt="dice" />
+      <button aria-label="generate advice" class="dice" id="dice">
+        
       </button>
     </div>`;
 
