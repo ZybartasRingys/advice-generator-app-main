@@ -54,4 +54,4 @@ async function renderAdvice() {
   btn.addEventListener("click", renderAdvice);
 }
 
-window.onload = renderAdvice;
+renderAdvice();
